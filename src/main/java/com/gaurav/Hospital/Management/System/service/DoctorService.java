@@ -1,60 +1,67 @@
 package com.gaurav.Hospital.Management.System.service;
 
-import com.gaurav.Hospital.Management.System.models.Appointment;
 import com.gaurav.Hospital.Management.System.models.Doctor;
-import com.gaurav.Hospital.Management.System.models.Patient;
+import com.gaurav.Hospital.Management.System.repository.DoctorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DoctorService {
 
-    public List<Doctor> getAllDoctors(){
-        try {
-            System.out.println("into service layer");
-            //interact with repo layer
-            return null;
+    @Autowired
+    private DoctorRepository doctorRepository;
 
-        } catch (Exception e) {
-            System.out.println("Error Message"+ e.getMessage());
-            return null;
-        }
-    }
-    public Doctor getDoctorById(Long Id){
+    public List<Doctor> getAllDoctors() {
         try {
-            return null;
+            System.out.println("Into service layer");
+            return doctorRepository.findAll();
         } catch (Exception e) {
-            System.out.println("Error Message"+ e.getMessage());
+            System.out.println("Error Message: " + e.getMessage());
             return null;
         }
     }
 
-    public Doctor createDoctor(Doctor doctor){
+    public Doctor getDoctorById(Long id) {
         try {
-            return null;
+            Optional<Doctor> doctor = doctorRepository.findById(id);
+            return doctor.orElse(null);
         } catch (Exception e) {
-            System.out.println("Error Message"+ e.getMessage());
+            System.out.println("Error Message: " + e.getMessage());
             return null;
         }
     }
 
-
-    public Doctor deleteDoctor(Long id){
+    public Doctor createDoctor(Doctor doctor) {
         try {
-            return null;
+            return doctorRepository.save(doctor);
         } catch (Exception e) {
-            System.out.println("Error Message"+ e.getMessage());
+            System.out.println("Error Message: " + e.getMessage());
             return null;
         }
     }
 
-    public Doctor updateDoctor(Long id){
+    public void deleteDoctor(Long id) {
         try {
-            return null;
+            doctorRepository.deleteById(id);
         } catch (Exception e) {
-            System.out.println("Error Message"+ e.getMessage());
-            return null;
+            System.out.println("Error Message: " + e.getMessage());
+        }
+    }
+
+    public void updateDoctor(Long id, Doctor updatedDoctor) {
+        try {
+            Optional<Doctor> existingDoctor = doctorRepository.findById(id);
+            if (existingDoctor.isPresent()) {
+                Doctor d = existingDoctor.get();
+                d.setName(updatedDoctor.getName());
+                d.setSpeciality(updatedDoctor.getSpeciality());
+                doctorRepository.save(d);
+            }
+        } catch (Exception e) {
+            System.out.println("Error Message: " + e.getMessage());
         }
     }
 }

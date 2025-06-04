@@ -7,39 +7,41 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/api/v1/doctors")
 public class DoctorController {
+
     @Autowired
     private DoctorService doctorService;
 
     @GetMapping
-    public List<Doctor> getAllDoctors(){
-        System.out.println("Fetching all Doctors....");
-        return null;
+    public List<Doctor> getAllDoctors() {
+        System.out.println("Fetching all Doctors...");
+        return doctorService.getAllDoctors();
     }
 
     @PostMapping
-    public Doctor createDoctor(@RequestBody Doctor doctor){
-        System.out.println("Creating Doctor....");
+    public Doctor createDoctor(@RequestBody Doctor doctor) {
+        System.out.println("Creating Doctor...");
         return doctorService.createDoctor(doctor);
     }
 
     @GetMapping("/{id}")
-    public Doctor getDoctorById(@PathVariable Long id){
-        System.out.println("Fetching the Doctor By Id..." + id);
+    public Doctor getDoctorById(@PathVariable Long id) {
+        System.out.println("Fetching Doctor by ID..." + id);
         return doctorService.getDoctorById(id);
     }
+
     @DeleteMapping("/{id}")
-    public void deleteDoctor(@PathVariable Long id){
-        System.out.println("Deleting theDoctor By Id..." + id);
+    public void deleteDoctor(@PathVariable Long id) {
+        System.out.println("Deleting Doctor by ID..." + id);
         doctorService.deleteDoctor(id);
-
-
     }
 
     @PutMapping("/{id}")
-    public void updateDoctor(@PathVariable Long id){
-        System.out.println("Updating the Doctor By Id..." + id);
-        doctorService.updateDoctor(id);
-
+    public Doctor updateDoctor(@PathVariable Long id, @RequestBody Doctor doctor) {
+        System.out.println("Updating Doctor by ID..." + id);
+        doctorService.updateDoctor(id, doctor);
+        return doctor;
     }
 }
