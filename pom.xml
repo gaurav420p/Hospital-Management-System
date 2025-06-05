@@ -36,6 +36,13 @@
 			</exclusions>
 		</dependency>
 
+		<!--  dependency for Actuator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+
 		<!-- Spring Boot Starter JPA (Exclude Logback) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

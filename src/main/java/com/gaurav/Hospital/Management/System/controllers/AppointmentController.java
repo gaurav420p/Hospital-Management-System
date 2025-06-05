@@ -25,6 +25,27 @@ public class AppointmentController {
         System.out.println("Creating the Appointment...");
         return appointmentService.createAppointment(appointment);
     }
+//    @PostMapping
+//    public Appointment createAppointment(@RequestBody Appointment appointmentRequest) {
+//        System.out.println("Creating the Appointment...");
+//
+//        // 1. Create the appointment using the service layer
+//        Appointment appointment = appointmentService.createAppointment(appointmentRequest);
+//
+//        // 2. Prepare the webhook payload
+//        Map<String, Object> payload = new HashMap<>();
+//        payload.put("appointmentId", appointment.getId());
+//        payload.put("patientId", appointment.getPatientId());
+//        payload.put("doctorId", appointment.getDoctorId());
+//        payload.put("appointmentDate", appointment.getDate());
+//
+//        // 3. Send the webhook
+//        String webhookUrl = "http://localhost:8081/webhook"; // Replace with your actual webhook endpoint
+//        webhookService.sendWebhook(webhookUrl, payload);
+//
+//        return appointment;
+//    }
+
 
     @GetMapping("/{id}")
     public Appointment getAppointmentById(@PathVariable Long id) {

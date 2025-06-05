@@ -3,6 +3,7 @@ package com.gaurav.Hospital.Management.System.controllers;
 import com.gaurav.Hospital.Management.System.models.Patient;
 import com.gaurav.Hospital.Management.System.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,9 +16,9 @@ public class PatientController {
     private PatientService patientService;
 
     @GetMapping
-    public List<Patient> getAllPatient() {
+    public Page<Patient> getAllPatient(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size) {
         System.out.println("Fetching the Patients....");
-        return patientService.getAllPatients();
+        return patientService.getAllPatients(page,size);
     }
 
     @PostMapping
