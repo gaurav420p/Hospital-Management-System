@@ -20,8 +20,6 @@ Clean Architecture using layered structure (Controller → Service → Repositor
 🚀 Technologies Used:
 Backend: Spring Boot, Spring Web, Spring Data JPA, Hibernate
 
-)
-
 Database: MySQL/PostgreSQL (configurable)
 
 Logging: Log4j2
