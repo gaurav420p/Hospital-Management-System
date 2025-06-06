@@ -1,6 +1,8 @@
 This project is a full-stack Hospital Management System built using Spring Boot (Java) for the backend and React for the frontend. It provides complete CRUD functionality for managing patients, doctors, appointments, and billing records.
 
+
 ✅ Features:
+
 Patient, Doctor, Appointment, and Billing Modules with full CRUD support
 
 Pagination implemented using Spring Data for efficient handling of large records
@@ -17,7 +19,11 @@ Exception Handling and Logging Best Practices
 
 Clean Architecture using layered structure (Controller → Service → Repository)
 
+
+
+
 🚀 Technologies Used:
+
 Backend: Spring Boot, Spring Web, Spring Data JPA, Hibernate
 
 Database: MySQL/PostgreSQL (configurable)
